@@ -1,6 +1,5 @@
 <?php
 
-
 $filename = 'hello_world.html';
 
 
@@ -49,10 +48,8 @@ echo "<!DOCTYPE html>
 <body>";
 
 
-
 if (!file_exists($filename)) {
-
-
+    
     $htmlContent = "<!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -96,11 +93,15 @@ if (!file_exists($filename)) {
     file_put_contents($filename, $htmlContent);
 
 
-
     echo "<div class='message-container success'>
             <strong>File created successfully!</strong> Click <a href='$filename'>here</a> to open it.
           </div>";
 } else {
+
+    $existingContent = file_get_contents($filename);
+
+
+    $fileLines = file($filename);
 
 
     echo "<div class='message-container exists'>
